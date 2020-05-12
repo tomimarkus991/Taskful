@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
 /* Global Styles */
 :root {
@@ -16,7 +16,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -182,6 +182,11 @@ img {
   grid-template-columns: 2fr 3fr;
   grid-gap: 2rem;
 }
+.grid-tasks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
+}
 
 .btn {
   display: inline-block;
@@ -271,6 +276,11 @@ img {
   color: #fff;
 }
 
+.badge-important {
+  background: red;
+  color: #fff;
+}
+
 .btn-white,
 .bg-white,
 .badge-white,
@@ -304,10 +314,10 @@ input {
   color: #888;
 }
 
-input[type='text'],
-input[type='email'],
-input[type='password'],
-input[type='date'],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
 select,
 textarea {
   display: block;
@@ -317,7 +327,7 @@ textarea {
   border: 1px solid #ccc;
 }
 
-input[type='submit'],
+input[type="submit"],
 button {
   font: inherit;
 }
@@ -390,14 +400,14 @@ table th {
 }
 .item-enter-active {
   opacity: 1;
-  transition: opacity 1000ms ease-in;
+  transition: opacity 200ms ease-in;
 }
 .item-exit {
   opacity: 1;
 }
 .item-exit-active {
   opacity: 0;
-  transition: opacity 1000ms ease-in;
+  transition: opacity 200ms ease-in;
 }
 
 /* Mobile Styles */
