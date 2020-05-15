@@ -3,6 +3,7 @@ import AlertContext from "../../context/alert/AlertContext";
 
 const Login = () => {
   const alertContext = useContext(AlertContext);
+  const { setAlert } = alertContext;
   const [user, setUser] = useState({
     email: "",
     password: "",
