@@ -64,7 +64,7 @@ const TaskForm = () => {
         checked={type === "not important"}
         onChange={onChange}
       />{" "}
-      Not important
+      Not important&nbsp;
       <input
         type="radio"
         name="type"
