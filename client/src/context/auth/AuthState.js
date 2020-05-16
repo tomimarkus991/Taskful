@@ -62,7 +62,26 @@ const AuthState = (props) => {
   };
 
   // Login User
-  const login = () => console.log("loaduser");
+  const login = async (formData) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    try {
+      const res = await axios.post("/api/auth", formData, config);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data,
+      });
+      loadUser();
+    } catch (err) {
+      dispatch({
+        type: LOGIN_FAIL,
+        payload: err.response.data.msg,
+      });
+    }
+  };
 
   // Logout
   const logout = () => console.log("loaduser");
@@ -74,6 +93,11 @@ const AuthState = (props) => {
   return (
     <AuthContext.Provider
       value={{
+        // token: state.token,
+        // isAuthenticated: state.isAuthenticated,
+        // loading: state.loading,
+        // user: state.user,
+        // error: state.error,
         token,
         isAuthenticated,
         loading,
