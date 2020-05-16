@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import axios from "axios";
 import TaskContext from "./TaskContext";
 import TaskReducer from "./TaskReducer";
 
@@ -14,43 +15,50 @@ import {
   CLEAR_FILTER,
   TASK_ERROR,
 } from "../types";
-const uuid = require("uuid");
 
 const TaskState = (props) => {
   const initialState = {
-    tasks: [
-      {
-        id: 1,
-        title: "Play some games",
-        description: "Play R6",
-        type: "important",
-      },
-      {
-        id: 2,
-        title: "Bring milk",
-        type: "important",
-      },
-      {
-        id: 3,
-        title: "Make a cup of tea",
-        description: "Make cold tea",
-        type: "not important",
-      },
-    ],
+    tasks: null,
     current: null,
     filtered: null,
+    error: null,
   };
   const [state, dispatch] = useReducer(TaskReducer, initialState);
 
+  // Get Tasks
+  const getTasks = async () => {
+    try {
+      const res = await axios.get("api/tasks");
+      dispatch({ type: GET_TASKS, payload: res.data });
+    } catch (err) {
+      dispatch({ type: TASK_ERROR, payload: err.response.msg });
+    }
+  };
+
   // Add Task
-  const addTask = (task) => {
-    task.id = uuid.v4();
-    dispatch({ type: ADD_TASK, payload: task });
+  const addTask = async (task) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.post("api/tasks", task, config);
+      dispatch({ type: ADD_TASK, payload: res.data });
+    } catch (err) {
+      dispatch({ type: TASK_ERROR, payload: err.response.msg });
+    }
   };
 
   // Delete Task
   const deleteTask = (id) => {
     dispatch({ type: DELETE_TASK, payload: id });
+  };
+
+  // Clear Tasks
+  const clearTasks = () => {
+    dispatch({ type: CLEAR_TASKS });
   };
 
   // Set Current Task
@@ -78,12 +86,14 @@ const TaskState = (props) => {
     dispatch({ type: CLEAR_FILTER });
   };
 
+  const { tasks, current, filtered, error } = state;
   return (
     <TaskContext.Provider
       value={{
-        tasks: state.tasks,
-        current: state.current,
-        filtered: state.filtered,
+        tasks,
+        current,
+        filtered,
+        error,
         addTask,
         deleteTask,
         setCurrent,
@@ -91,6 +101,8 @@ const TaskState = (props) => {
         updateTask,
         filterTasks,
         clearFilter,
+        getTasks,
+        clearTasks,
       }}
     >
       {props.children}

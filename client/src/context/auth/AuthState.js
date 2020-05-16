@@ -89,15 +89,10 @@ const AuthState = (props) => {
   // Clear Errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
-  const { token, isAuthenticated, loading, user, error } = state; // see võib katki olla kui mu kalkulatsioonid eksivad pane lihtsalt state teistele ette
+  const { token, isAuthenticated, loading, user, error } = state;
   return (
     <AuthContext.Provider
       value={{
-        // token: state.token,
-        // isAuthenticated: state.isAuthenticated,
-        // loading: state.loading,
-        // user: state.user,
-        // error: state.error,
         token,
         isAuthenticated,
         loading,
