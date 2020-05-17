@@ -52,8 +52,29 @@ const TaskState = (props) => {
   };
 
   // Delete Task
-  const deleteTask = (id) => {
-    dispatch({ type: DELETE_TASK, payload: id });
+  const deleteTask = async (id) => {
+    try {
+      await axios.delete(`api/tasks/${id}`);
+      dispatch({ type: DELETE_TASK, payload: id });
+    } catch (err) {
+      dispatch({ type: TASK_ERROR, payload: err.response.msg });
+    }
+  };
+
+  // Update Task
+  const updateTask = async (task) => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const res = await axios.put(`api/tasks/${task._id}`, task, config);
+      dispatch({ type: UPDATE_TASK, payload: res.data });
+    } catch (err) {
+      dispatch({ type: TASK_ERROR, payload: err.response.msg });
+    }
   };
 
   // Clear Tasks
@@ -69,11 +90,6 @@ const TaskState = (props) => {
   // Clear Current Task
   const clearCurrent = () => {
     dispatch({ type: CLEAR_CURRENT });
-  };
-
-  // Update Task
-  const updateTask = (task) => {
-    dispatch({ type: UPDATE_TASK, payload: task });
   };
 
   // Filter Task

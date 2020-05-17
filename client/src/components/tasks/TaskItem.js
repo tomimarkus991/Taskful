@@ -5,9 +5,9 @@ import TaskContext from "../../context/task/TaskContext";
 const TaskItem = ({ task }) => {
   const taskContext = useContext(TaskContext);
   const { deleteTask, setCurrent, clearCurrent } = taskContext;
-  const { id, title, description, type } = task;
+  const { _id, title, description, type } = task;
   const onDelete = () => {
-    deleteTask(id);
+    deleteTask(_id);
     clearCurrent();
   };
   return (

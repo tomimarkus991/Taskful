@@ -11,7 +11,6 @@ const Tasks = () => {
 
   useEffect(() => {
     getTasks();
-
     // eslint-disable-next-line
   }, []);
 
@@ -25,12 +24,12 @@ const Tasks = () => {
         <TransitionGroup>
           {filtered !== null
             ? filtered.map((task) => (
-                <CSSTransition key={task._id} timeout={400} classNames="item">
+                <CSSTransition key={task._id} timeout={500} classNames="item">
                   <TaskItem task={task} />
                 </CSSTransition>
               ))
             : tasks.map((task) => (
-                <CSSTransition key={task._id} timeout={400} classNames="item">
+                <CSSTransition key={task._id} timeout={500} classNames="item">
                   <TaskItem task={task} />
                 </CSSTransition>
               ))}

@@ -22,21 +22,29 @@ export default (state, action) => {
     case ADD_TASK:
       return {
         ...state,
-        tasks: [...state.tasks, action.payload],
+        tasks: [action.payload, ...state.tasks],
+        loading: false,
+      };
+    case DELETE_TASK:
+      return {
+        ...state,
+        tasks: state.tasks.filter((task) => task._id !== action.payload),
         loading: false,
       };
     case UPDATE_TASK:
       return {
         ...state,
         tasks: state.tasks.map((task) =>
-          task.id === action.payload.id ? action.payload : task
+          task._id === action.payload._id ? action.payload : task
         ),
-        loading: false,
-      };
-    case DELETE_TASK:
-      return {
-        ...state,
-        tasks: state.tasks.filter((task) => task.id !== action.payload),
+        filtered:
+          state.filtered != null
+            ? state.filtered.map((filteredTask) =>
+                filteredTask._id === action.payload._id
+                  ? action.payload
+                  : filteredTask
+              )
+            : null,
         loading: false,
       };
     case CLEAR_TASKS:
