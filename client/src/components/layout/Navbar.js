@@ -18,6 +18,9 @@ const Navbar = ({ title, icon }) => {
 
   const authLinks = (
     <Fragment>
+      <li>
+        <Link to="/api">Api</Link>
+      </li>
       <li>Hello {user && user.name}</li>
       <li>
         <a onClick={onLogout} href="#!">
@@ -29,6 +32,9 @@ const Navbar = ({ title, icon }) => {
   );
   const guestLinks = (
     <Fragment>
+      <li>
+        <Link to="/api">Api</Link>
+      </li>
       <li>
         <Link to="/register">Register</Link>
       </li>
