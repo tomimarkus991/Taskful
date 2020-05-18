@@ -151,7 +151,7 @@ const Api = () => {
             <tbody>
               <tr class="alt">
                 <td colspan="3">
-                  URIs relative to https://taskful.herokuapp.com/login
+                  URIs relative to https://taskful.herokuapp.com
                 </td>
               </tr>
 
@@ -206,7 +206,7 @@ const Api = () => {
                 </td>
                 <td>x-auth-token</td>
                 <td>
-                  If you log in it will check if the user matches using the
+                  If you log in it will check if the user matches. Using the
                   token
                 </td>
               </tr>
