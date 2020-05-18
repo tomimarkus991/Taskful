@@ -15,7 +15,9 @@ const Tasks = () => {
   }, []);
 
   if (tasks !== null && tasks.length === 0 && !loading) {
-    return <h4>Congratulations. Now go and take a break!</h4>;
+    return (
+      <h4>Congratulations. You have no Tasks left. Now go and take a break!</h4>
+    );
   }
 
   return (
