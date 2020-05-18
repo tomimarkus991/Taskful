@@ -26,6 +26,7 @@ const Api = () => {
     <div>
       <div>
         <h1>About this API</h1>
+        <a href="https://github.com/tomimarkus991/Taskful">Taskful-Github</a>
         <p className="my-1">
           This is a REST API for Creating, Deleting, Updating, Getting Tasks &
           Registering, Logging, Authenticating Users
@@ -38,7 +39,14 @@ const Api = () => {
       {/* Tasks */}
       <section>
         <h2 className="my-2 text-left">Tasks</h2>
-
+        <div>
+          <h3 className="text-left">Fields</h3>
+          <p>user ID (Automatically Generated)</p>
+          <p>title</p>
+          <p>description</p>
+          <p>type: Important / Not important (default:Not important)</p>
+          <p>date (Automatically Generated)</p>
+        </div>
         <div class="devsite-table-wrapper">
           <table>
             <thead>
@@ -136,6 +144,20 @@ const Api = () => {
       {/* Users */}
       <section>
         <h2 className="my-2 text-left">Users</h2>
+
+        <div>
+          <h3 className="text-left">Fields Register</h3>
+          <p>name (required)</p>
+          <p>email (required, unique)</p>
+          <p>password (required)</p>
+          <p>regDate (Automatically Generated)</p>
+        </div>
+
+        <div>
+          <h3 className="text-left">Fields Login</h3>
+          <p>email (required, unique)</p>
+          <p>password (required)</p>
+        </div>
 
         <div class="devsite-table-wrapper">
           <table>
