@@ -53,7 +53,7 @@ const Api = () => {
             <tbody>
               <tr class="alt">
                 <td colspan="3">
-                  URIs relative to https://www.taskful.herokuapp.com/
+                  URIs relative to https://taskful.herokuapp.com/login
                 </td>
               </tr>
 
@@ -151,7 +151,7 @@ const Api = () => {
             <tbody>
               <tr class="alt">
                 <td colspan="3">
-                  URIs relative to https://www.taskful.herokuapp.com/
+                  URIs relative to https://taskful.herokuapp.com/login
                 </td>
               </tr>
 
