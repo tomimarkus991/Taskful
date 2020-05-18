@@ -53,7 +53,7 @@ const Api = () => {
             <tbody>
               <tr class="alt">
                 <td colspan="3">
-                  URIs relative to https://taskful.herokuapp.com/login
+                  URIs relative to https://taskful.herokuapp.com
                 </td>
               </tr>
 
@@ -187,7 +187,7 @@ const Api = () => {
                   </code>
                 </td>
                 <td>Content-Type: application/json</td>
-                <td>Sends the token</td>
+                <td>Authenticates the User and Gets the Token</td>
                 <td>{jsonLoginStr}</td>
               </tr>
 
@@ -205,7 +205,10 @@ const Api = () => {
                   </code>
                 </td>
                 <td>x-auth-token</td>
-                <td>Authenticate logged in user using the token</td>
+                <td>
+                  If you log in it will check if the user matches using the
+                  token
+                </td>
               </tr>
             </tbody>
           </table>
